@@ -54,15 +54,20 @@
                                 maxOccurs="1"
                                 name="Author"
                                 type="tns:ArrayOfAuthor"/>
+                     <s:element minOccurs="1"
+                                maxOccurs="1"
+                                name="BookType"
+                                type="tns:BookTypeEnum"/>
                      <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Category"/>
                      <s:element minOccurs="1" maxOccurs="1" name="Edition" type="s:int"/>
-                     <s:element minOccurs="1" maxOccurs="1" name="IBSN" type="s:int"/>
+                     <s:element minOccurs="1" maxOccurs="1" name="ISBN" type="s:int"/>
                      <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string"/>
                      <s:element minOccurs="1" maxOccurs="1" name="Name" type="s:int"/>
                      <s:element minOccurs="0"
                                 maxOccurs="1"
                                 name="Publisher"
                                 type="tns:Publisher"/>
+                     <s:element minOccurs="1" maxOccurs="1" name="Size" type="tns:SizeEnum"/>
                      <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int"/>
                   </s:sequence>
                </s:extension>
@@ -110,6 +115,21 @@
                           type="tns:Author"/>
             </s:sequence>
          </s:complexType>
+         <s:simpleType name="BookTypeEnum">
+            <s:restriction base="s:string">
+               <s:enumeration value="HardCover"/>
+               <s:enumeration value="PaperBack"/>
+            </s:restriction>
+         </s:simpleType>
+         <s:simpleType name="SizeEnum">
+            <s:restriction base="s:string">
+               <s:enumeration value="VeryLarge"/>
+               <s:enumeration value="Large"/>
+               <s:enumeration value="Medium"/>
+               <s:enumeration value="Small"/>
+               <s:enumeration value="VerySmall"/>
+            </s:restriction>
+         </s:simpleType>
          <s:element name="GetBook">
             <s:complexType>
                <s:sequence>
