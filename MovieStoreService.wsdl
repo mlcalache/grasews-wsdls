@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://moviestoreservice.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://moviestoreservice.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://moviestoreservice.com/">
+      <s:element name="ChangeMovieCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="categoryId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeMovieCategoryResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChangeMovieNationality">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="countryId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeMovieNationalityResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllAwards">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllAwardsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAwardsResult" type="tns:ArrayOfAward" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAward">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Award" nillable="true" type="tns:Award" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Award">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Location" type="tns:Country" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Country">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllCategories">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCategoriesResult" type="tns:ArrayOfCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Category">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllCountries">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCountriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCountriesResult" type="tns:ArrayOfCountry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCountry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="tns:Country" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllMovies">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllMoviesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMovie">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Movie" nillable="true" type="tns:Movie" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Movie">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Awards" type="tns:ArrayOfAward" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cast" type="tns:ArrayOfActor" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
+              <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Category" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfActor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Actor" nillable="true" type="tns:Actor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Actor">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllMoviesByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="categoryId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByCategoryResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAwardsByMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAwardsByMovieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAwardsByMovieResult" type="tns:ArrayOfAward" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCastByMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCastByMovieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCastByMovieResult" type="tns:ArrayOfActor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMovieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMovieResult" type="tns:Movie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterNewCountry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="countryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterNewCountryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterNewCountryResult" type="tns:Country" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterNewMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movie" type="tns:Movie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterNewMovieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterNewMovieResult" type="tns:Movie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveMovieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveMovieResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="movie" type="tns:Movie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMovieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMovieResult" type="tns:Movie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ChangeMovieCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeMovieCategory" />
+  </wsdl:message>
+  <wsdl:message name="ChangeMovieCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeMovieCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeMovieNationalitySoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeMovieNationality" />
+  </wsdl:message>
+  <wsdl:message name="ChangeMovieNationalitySoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeMovieNationalityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAwardsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllAwards" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAwardsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllAwardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCountries" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMovies" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAwardsByMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAwardsByMovie" />
+  </wsdl:message>
+  <wsdl:message name="GetAwardsByMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAwardsByMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCastByMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCastByMovie" />
+  </wsdl:message>
+  <wsdl:message name="GetCastByMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCastByMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMovie" />
+  </wsdl:message>
+  <wsdl:message name="GetMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewCountrySoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterNewCountry" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewCountrySoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterNewCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterNewMovie" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterNewMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveMovie" />
+  </wsdl:message>
+  <wsdl:message name="RemoveMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMovie" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMovieResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MovieStoreServiceSoap">
+    <wsdl:operation name="ChangeMovieCategory">
+      <wsdl:input message="tns:ChangeMovieCategorySoapIn" />
+      <wsdl:output message="tns:ChangeMovieCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMovieNationality">
+      <wsdl:input message="tns:ChangeMovieNationalitySoapIn" />
+      <wsdl:output message="tns:ChangeMovieNationalitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAwards">
+      <wsdl:input message="tns:GetAllAwardsSoapIn" />
+      <wsdl:output message="tns:GetAllAwardsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategories">
+      <wsdl:input message="tns:GetAllCategoriesSoapIn" />
+      <wsdl:output message="tns:GetAllCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountries">
+      <wsdl:input message="tns:GetAllCountriesSoapIn" />
+      <wsdl:output message="tns:GetAllCountriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMovies">
+      <wsdl:input message="tns:GetAllMoviesSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCategory">
+      <wsdl:input message="tns:GetAllMoviesByCategorySoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAwardsByMovie">
+      <wsdl:input message="tns:GetAwardsByMovieSoapIn" />
+      <wsdl:output message="tns:GetAwardsByMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCastByMovie">
+      <wsdl:input message="tns:GetCastByMovieSoapIn" />
+      <wsdl:output message="tns:GetCastByMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <wsdl:input message="tns:GetMovieSoapIn" />
+      <wsdl:output message="tns:GetMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewCountry">
+      <wsdl:input message="tns:RegisterNewCountrySoapIn" />
+      <wsdl:output message="tns:RegisterNewCountrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewMovie">
+      <wsdl:input message="tns:RegisterNewMovieSoapIn" />
+      <wsdl:output message="tns:RegisterNewMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMovie">
+      <wsdl:input message="tns:RemoveMovieSoapIn" />
+      <wsdl:output message="tns:RemoveMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMovie">
+      <wsdl:input message="tns:UpdateMovieSoapIn" />
+      <wsdl:output message="tns:UpdateMovieSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MovieStoreServiceSoap" type="tns:MovieStoreServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ChangeMovieCategory">
+      <soap:operation soapAction="http://moviestoreservice.com/ChangeMovieCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMovieNationality">
+      <soap:operation soapAction="http://moviestoreservice.com/ChangeMovieNationality" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAwards">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllAwards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategories">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountries">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMovies">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCategory">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAwardsByMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAwardsByMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCastByMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/GetCastByMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/GetMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewCountry">
+      <soap:operation soapAction="http://moviestoreservice.com/RegisterNewCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/RegisterNewMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/RemoveMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/UpdateMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MovieStoreServiceSoap12" type="tns:MovieStoreServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ChangeMovieCategory">
+      <soap12:operation soapAction="http://moviestoreservice.com/ChangeMovieCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMovieNationality">
+      <soap12:operation soapAction="http://moviestoreservice.com/ChangeMovieNationality" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAwards">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllAwards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategories">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountries">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllCountries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMovies">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMovies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCategory">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAwardsByMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAwardsByMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCastByMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetCastByMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewCountry">
+      <soap12:operation soapAction="http://moviestoreservice.com/RegisterNewCountry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/RegisterNewMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/RemoveMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/UpdateMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MovieStoreService">
+    <wsdl:port name="MovieStoreServiceSoap" binding="tns:MovieStoreServiceSoap">
+      <soap:address location="https://localhost:44350/MovieStoreService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MovieStoreServiceSoap12" binding="tns:MovieStoreServiceSoap12">
+      <soap12:address location="https://localhost:44350/MovieStoreService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
