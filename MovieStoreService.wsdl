@@ -64,22 +64,22 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:element name="GetAllCategories">
+      <s:element name="GetAllGenders">
         <s:complexType />
       </s:element>
-      <s:element name="GetAllCategoriesResponse">
+      <s:element name="GetAllGendersResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllCategoriesResult" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllGendersResult" type="tns:ArrayOfGender" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfCategory">
+      <s:complexType name="ArrayOfGender">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Gender" nillable="true" type="tns:Gender" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Category">
+      <s:complexType name="Gender">
         <s:complexContent mixed="false">
           <s:extension base="tns:BaseModel">
             <s:sequence>
@@ -87,21 +87,6 @@
             </s:sequence>
           </s:extension>
         </s:complexContent>
-      </s:complexType>
-      <s:element name="GetAllCountries">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllCountriesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllCountriesResult" type="tns:ArrayOfCountry" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfCountry">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="tns:Country" />
-        </s:sequence>
       </s:complexType>
       <s:element name="GetAllMovies">
         <s:complexType />
@@ -127,7 +112,9 @@
               <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
               <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Category" />
+              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Gender" />
+              <s:element minOccurs="0" maxOccurs="1" name="Producers" type="tns:ArrayOfProducer" />
+              <s:element minOccurs="0" maxOccurs="1" name="Directors" type="tns:ArrayOfDirector" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -149,17 +136,121 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:element name="GetAllMoviesByCategory">
+      <s:complexType name="ArrayOfProducer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Producer" nillable="true" type="tns:Producer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Producer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDirector">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Director" nillable="true" type="tns:Director" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Director">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseModel">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllMoviesByActorName">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="categoryId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="actorName" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllMoviesByCategoryResponse">
+      <s:element name="GetAllMoviesByActorNameResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByCategoryResult" type="tns:ArrayOfMovie" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByActorNameResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByCategoryName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categoryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByCategoryNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByCategoryNameResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByCountryName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="countryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByCountryNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByCountryNameResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByDirectorName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="directorName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByDirectorNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByDirectorNameResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByGenderName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="genderName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByGenderNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByGenderNameResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByProducerName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="producerName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesByProducerNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByProducerNameResult" type="tns:ArrayOfMovie" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -205,17 +296,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="RegisterNewCountry">
+      <s:element name="GetMovieByMovieName">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="countryName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="movieName" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="RegisterNewCountryResponse">
+      <s:element name="GetMovieByMovieNameResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RegisterNewCountryResult" type="tns:Country" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetMovieByMovieNameResult" type="tns:Movie" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -282,17 +373,11 @@
   <wsdl:message name="GetAllAwardsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllAwardsResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllCategoriesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllCategories" />
+  <wsdl:message name="GetAllGendersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllGenders" />
   </wsdl:message>
-  <wsdl:message name="GetAllCategoriesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAllCountriesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllCountries" />
-  </wsdl:message>
-  <wsdl:message name="GetAllCountriesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
+  <wsdl:message name="GetAllGendersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllGendersResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllMoviesSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllMovies" />
@@ -300,11 +385,41 @@
   <wsdl:message name="GetAllMoviesSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllMoviesResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllMoviesByCategorySoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategory" />
+  <wsdl:message name="GetAllMoviesByActorNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByActorName" />
   </wsdl:message>
-  <wsdl:message name="GetAllMoviesByCategorySoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategoryResponse" />
+  <wsdl:message name="GetAllMoviesByActorNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByActorNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByCategoryNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategoryName" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByCategoryNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategoryNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByCountryNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByCountryName" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByCountryNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByCountryNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByDirectorNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByDirectorName" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByDirectorNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByDirectorNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByGenderNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByGenderName" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByGenderNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByGenderNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByProducerNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByProducerName" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesByProducerNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByProducerNameResponse" />
   </wsdl:message>
   <wsdl:message name="GetAwardsByMovieSoapIn">
     <wsdl:part name="parameters" element="tns:GetAwardsByMovie" />
@@ -324,11 +439,11 @@
   <wsdl:message name="GetMovieSoapOut">
     <wsdl:part name="parameters" element="tns:GetMovieResponse" />
   </wsdl:message>
-  <wsdl:message name="RegisterNewCountrySoapIn">
-    <wsdl:part name="parameters" element="tns:RegisterNewCountry" />
+  <wsdl:message name="GetMovieByMovieNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMovieByMovieName" />
   </wsdl:message>
-  <wsdl:message name="RegisterNewCountrySoapOut">
-    <wsdl:part name="parameters" element="tns:RegisterNewCountryResponse" />
+  <wsdl:message name="GetMovieByMovieNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMovieByMovieNameResponse" />
   </wsdl:message>
   <wsdl:message name="RegisterNewMovieSoapIn">
     <wsdl:part name="parameters" element="tns:RegisterNewMovie" />
@@ -361,21 +476,37 @@
       <wsdl:input message="tns:GetAllAwardsSoapIn" />
       <wsdl:output message="tns:GetAllAwardsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <wsdl:input message="tns:GetAllCategoriesSoapIn" />
-      <wsdl:output message="tns:GetAllCategoriesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <wsdl:input message="tns:GetAllCountriesSoapIn" />
-      <wsdl:output message="tns:GetAllCountriesSoapOut" />
+    <wsdl:operation name="GetAllGenders">
+      <wsdl:input message="tns:GetAllGendersSoapIn" />
+      <wsdl:output message="tns:GetAllGendersSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllMovies">
       <wsdl:input message="tns:GetAllMoviesSoapIn" />
       <wsdl:output message="tns:GetAllMoviesSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByCategory">
-      <wsdl:input message="tns:GetAllMoviesByCategorySoapIn" />
-      <wsdl:output message="tns:GetAllMoviesByCategorySoapOut" />
+    <wsdl:operation name="GetAllMoviesByActorName">
+      <wsdl:input message="tns:GetAllMoviesByActorNameSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByActorNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCategoryName">
+      <wsdl:input message="tns:GetAllMoviesByCategoryNameSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByCategoryNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCountryName">
+      <wsdl:input message="tns:GetAllMoviesByCountryNameSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByCountryNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByDirectorName">
+      <wsdl:input message="tns:GetAllMoviesByDirectorNameSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByDirectorNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByGenderName">
+      <wsdl:input message="tns:GetAllMoviesByGenderNameSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByGenderNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByProducerName">
+      <wsdl:input message="tns:GetAllMoviesByProducerNameSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByProducerNameSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAwardsByMovie">
       <wsdl:input message="tns:GetAwardsByMovieSoapIn" />
@@ -389,9 +520,9 @@
       <wsdl:input message="tns:GetMovieSoapIn" />
       <wsdl:output message="tns:GetMovieSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="RegisterNewCountry">
-      <wsdl:input message="tns:RegisterNewCountrySoapIn" />
-      <wsdl:output message="tns:RegisterNewCountrySoapOut" />
+    <wsdl:operation name="GetMovieByMovieName">
+      <wsdl:input message="tns:GetMovieByMovieNameSoapIn" />
+      <wsdl:output message="tns:GetMovieByMovieNameSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RegisterNewMovie">
       <wsdl:input message="tns:RegisterNewMovieSoapIn" />
@@ -435,17 +566,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <soap:operation soapAction="http://moviestoreservice.com/GetAllCategories" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <soap:operation soapAction="http://moviestoreservice.com/GetAllCountries" style="document" />
+    <wsdl:operation name="GetAllGenders">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllGenders" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -462,8 +584,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByCategory">
-      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategory" style="document" />
+    <wsdl:operation name="GetAllMoviesByActorName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByActorName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCategoryName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategoryName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCountryName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCountryName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByDirectorName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByDirectorName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByGenderName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGenderName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByProducerName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByProducerName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -498,8 +665,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RegisterNewCountry">
-      <soap:operation soapAction="http://moviestoreservice.com/RegisterNewCountry" style="document" />
+    <wsdl:operation name="GetMovieByMovieName">
+      <soap:operation soapAction="http://moviestoreservice.com/GetMovieByMovieName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -564,17 +731,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetAllCategories" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetAllCountries" style="document" />
+    <wsdl:operation name="GetAllGenders">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllGenders" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -591,8 +749,53 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByCategory">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategory" style="document" />
+    <wsdl:operation name="GetAllMoviesByActorName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByActorName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCategoryName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategoryName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByCountryName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCountryName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByDirectorName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByDirectorName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByGenderName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGenderName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoviesByProducerName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByProducerName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -627,8 +830,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RegisterNewCountry">
-      <soap12:operation soapAction="http://moviestoreservice.com/RegisterNewCountry" style="document" />
+    <wsdl:operation name="GetMovieByMovieName">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetMovieByMovieName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
