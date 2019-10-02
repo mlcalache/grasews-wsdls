@@ -24,106 +24,6 @@
                 xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                 elementFormDefault="qualified"
                 targetNamespace="http://moviestoreservice.com/">
-         <s:element name="ChangeMovieCategory">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
-                  <s:element minOccurs="1" maxOccurs="1" name="categoryId" type="s:int"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="ChangeMovieCategoryResponse">
-            <s:complexType/>
-         </s:element>
-         <s:element name="ChangeMovieNationality">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
-                  <s:element minOccurs="1" maxOccurs="1" name="countryId" type="s:int"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="ChangeMovieNationalityResponse">
-            <s:complexType/>
-         </s:element>
-         <s:element name="GetAllAwards">
-            <s:complexType/>
-         </s:element>
-         <s:element name="GetAllAwardsResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAllAwardsResult"
-                             type="tns:ArrayOfAward"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:complexType name="ArrayOfAward">
-            <s:sequence>
-               <s:element minOccurs="0"
-                          maxOccurs="unbounded"
-                          name="Award"
-                          nillable="true"
-                          type="tns:Award"/>
-            </s:sequence>
-         </s:complexType>
-         <s:complexType name="Award">
-            <s:complexContent mixed="false">
-               <s:extension base="tns:BaseModel">
-                  <s:sequence>
-                     <s:element minOccurs="0" maxOccurs="1" name="Location" type="tns:Country"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
-                     <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int"/>
-                  </s:sequence>
-               </s:extension>
-            </s:complexContent>
-         </s:complexType>
-         <s:complexType name="BaseModel">
-            <s:sequence>
-               <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int"/>
-            </s:sequence>
-         </s:complexType>
-         <s:complexType name="Country">
-            <s:complexContent mixed="false">
-               <s:extension base="tns:BaseModel">
-                  <s:sequence>
-                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
-                  </s:sequence>
-               </s:extension>
-            </s:complexContent>
-         </s:complexType>
-         <s:element name="GetAllGenders">
-            <s:complexType/>
-         </s:element>
-         <s:element name="GetAllGendersResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAllGendersResult"
-                             type="tns:ArrayOfGender"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:complexType name="ArrayOfGender">
-            <s:sequence>
-               <s:element minOccurs="0"
-                          maxOccurs="unbounded"
-                          name="Gender"
-                          nillable="true"
-                          type="tns:Gender"/>
-            </s:sequence>
-         </s:complexType>
-         <s:complexType name="Gender">
-            <s:complexContent mixed="false">
-               <s:extension base="tns:BaseModel">
-                  <s:sequence>
-                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
-                  </s:sequence>
-               </s:extension>
-            </s:complexContent>
-         </s:complexType>
          <s:element name="GetAllMovies">
             <s:complexType/>
          </s:element>
@@ -174,67 +74,9 @@
                </s:extension>
             </s:complexContent>
          </s:complexType>
-         <s:complexType name="ArrayOfActor">
+         <s:complexType name="BaseModel">
             <s:sequence>
-               <s:element minOccurs="0"
-                          maxOccurs="unbounded"
-                          name="Actor"
-                          nillable="true"
-                          type="tns:Actor"/>
-            </s:sequence>
-         </s:complexType>
-         <s:complexType name="Actor">
-            <s:complexContent mixed="false">
-               <s:extension base="tns:BaseModel">
-                  <s:sequence>
-                     <s:element minOccurs="1"
-                                maxOccurs="1"
-                                name="DateOfBirth"
-                                type="s:dateTime"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
-                     <s:element minOccurs="0"
-                                maxOccurs="1"
-                                name="Nationality"
-                                type="tns:Country"/>
-                  </s:sequence>
-               </s:extension>
-            </s:complexContent>
-         </s:complexType>
-         <s:complexType name="ArrayOfProducer">
-            <s:sequence>
-               <s:element minOccurs="0"
-                          maxOccurs="unbounded"
-                          name="Producer"
-                          nillable="true"
-                          type="tns:Producer"/>
-            </s:sequence>
-         </s:complexType>
-         <s:complexType name="Producer">
-            <s:complexContent mixed="false">
-               <s:extension base="tns:BaseModel">
-                  <s:sequence>
-                     <s:element minOccurs="1"
-                                maxOccurs="1"
-                                name="DateOfBirth"
-                                type="s:dateTime"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
-                     <s:element minOccurs="0"
-                                maxOccurs="1"
-                                name="Nationality"
-                                type="tns:Country"/>
-                  </s:sequence>
-               </s:extension>
-            </s:complexContent>
-         </s:complexType>
-         <s:complexType name="ArrayOfDirector">
-            <s:sequence>
-               <s:element minOccurs="0"
-                          maxOccurs="unbounded"
-                          name="Director"
-                          nillable="true"
-                          type="tns:Director"/>
+               <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int"/>
             </s:sequence>
          </s:complexType>
          <s:complexType name="Director">
@@ -255,23 +97,107 @@
                </s:extension>
             </s:complexContent>
          </s:complexType>
-         <s:element name="GetAllMoviesByActorName">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="actorName" type="s:string"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByActorNameResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAllMoviesByActorNameResult"
-                             type="tns:ArrayOfMovie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
+         <s:complexType name="Country">
+            <s:complexContent mixed="false">
+               <s:extension base="tns:BaseModel">
+                  <s:sequence>
+                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+                  </s:sequence>
+               </s:extension>
+            </s:complexContent>
+         </s:complexType>
+         <s:complexType name="Producer">
+            <s:complexContent mixed="false">
+               <s:extension base="tns:BaseModel">
+                  <s:sequence>
+                     <s:element minOccurs="1"
+                                maxOccurs="1"
+                                name="DateOfBirth"
+                                type="s:dateTime"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+                     <s:element minOccurs="0"
+                                maxOccurs="1"
+                                name="Nationality"
+                                type="tns:Country"/>
+                  </s:sequence>
+               </s:extension>
+            </s:complexContent>
+         </s:complexType>
+         <s:complexType name="Gender">
+            <s:complexContent mixed="false">
+               <s:extension base="tns:BaseModel">
+                  <s:sequence>
+                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+                  </s:sequence>
+               </s:extension>
+            </s:complexContent>
+         </s:complexType>
+         <s:complexType name="Actor">
+            <s:complexContent mixed="false">
+               <s:extension base="tns:BaseModel">
+                  <s:sequence>
+                     <s:element minOccurs="1"
+                                maxOccurs="1"
+                                name="DateOfBirth"
+                                type="s:dateTime"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+                     <s:element minOccurs="0"
+                                maxOccurs="1"
+                                name="Nationality"
+                                type="tns:Country"/>
+                  </s:sequence>
+               </s:extension>
+            </s:complexContent>
+         </s:complexType>
+         <s:complexType name="Award">
+            <s:complexContent mixed="false">
+               <s:extension base="tns:BaseModel">
+                  <s:sequence>
+                     <s:element minOccurs="0" maxOccurs="1" name="Location" type="tns:Country"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+                     <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int"/>
+                  </s:sequence>
+               </s:extension>
+            </s:complexContent>
+         </s:complexType>
+         <s:complexType name="ArrayOfAward">
+            <s:sequence>
+               <s:element minOccurs="0"
+                          maxOccurs="unbounded"
+                          name="Award"
+                          nillable="true"
+                          type="tns:Award"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfActor">
+            <s:sequence>
+               <s:element minOccurs="0"
+                          maxOccurs="unbounded"
+                          name="Actor"
+                          nillable="true"
+                          type="tns:Actor"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfProducer">
+            <s:sequence>
+               <s:element minOccurs="0"
+                          maxOccurs="unbounded"
+                          name="Producer"
+                          nillable="true"
+                          type="tns:Producer"/>
+            </s:sequence>
+         </s:complexType>
+         <s:complexType name="ArrayOfDirector">
+            <s:sequence>
+               <s:element minOccurs="0"
+                          maxOccurs="unbounded"
+                          name="Director"
+                          nillable="true"
+                          type="tns:Director"/>
+            </s:sequence>
+         </s:complexType>
          <s:element name="GetAllMoviesByCategoryName">
             <s:complexType>
                <s:sequence>
@@ -289,139 +215,37 @@
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetAllMoviesByCountryName">
+         <s:element name="GetAwardsByMovieName">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="countryName" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetAllMoviesByCountryNameResponse">
+         <s:element name="GetAwardsByMovieNameResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="GetAllMoviesByCountryNameResult"
-                             type="tns:ArrayOfMovie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByDirectorName">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="directorName" type="s:string"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByDirectorNameResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAllMoviesByDirectorNameResult"
-                             type="tns:ArrayOfMovie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByGenderName">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="genderName" type="s:string"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByGenderNameResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAllMoviesByGenderNameResult"
-                             type="tns:ArrayOfMovie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByProducerName">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="producerName" type="s:string"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAllMoviesByProducerNameResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAllMoviesByProducerNameResult"
-                             type="tns:ArrayOfMovie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAwardsByMovie">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetAwardsByMovieResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetAwardsByMovieResult"
+                             name="GetAwardsByMovieNameResult"
                              type="tns:ArrayOfAward"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetCastByMovie">
+         <s:element name="GetCastByMovieName">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetCastByMovieResponse">
+         <s:element name="GetCastByMovieNameResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="GetCastByMovieResult"
+                             name="GetCastByMovieNameResult"
                              type="tns:ArrayOfActor"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetMovie">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetMovieResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetMovieResult"
-                             type="tns:Movie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetMovieByMovieName">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieName" type="s:int"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetMovieByMovieNameResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetMovieByMovieNameResult"
-                             type="tns:Movie"/>
                </s:sequence>
             </s:complexType>
          </s:element>
@@ -442,122 +266,50 @@
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="RemoveMovie">
+         <s:element name="RemoveMovieByName">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="RemoveMovieResponse">
+         <s:element name="RemoveMovieByNameResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="1"
                              maxOccurs="1"
-                             name="RemoveMovieResult"
+                             name="RemoveMovieByNameResult"
                              type="s:boolean"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="UpdateMovie">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="1" maxOccurs="1" name="movieId" type="s:int"/>
-                  <s:element minOccurs="0" maxOccurs="1" name="movie" type="tns:Movie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="UpdateMovieResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="UpdateMovieResult"
-                             type="tns:Movie"/>
                </s:sequence>
             </s:complexType>
          </s:element>
       </s:schema>
    </types>
    <interface name="MovieStoreServiceSoap">
-      <operation name="ChangeMovieCategory" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:ChangeMovieCategory"/>
-         <output element="tns:ChangeMovieCategoryResponse"/>
-      </operation>
-      <operation name="ChangeMovieNationality"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:ChangeMovieNationality"/>
-         <output element="tns:ChangeMovieNationalityResponse"/>
-      </operation>
-      <operation name="GetAllAwards" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllAwards"/>
-         <output element="tns:GetAllAwardsResponse"/>
-      </operation>
-      <operation name="GetAllGenders" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllGenders"/>
-         <output element="tns:GetAllGendersResponse"/>
-      </operation>
       <operation name="GetAllMovies" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:GetAllMovies"/>
          <output element="tns:GetAllMoviesResponse"/>
-      </operation>
-      <operation name="GetAllMoviesByActorName"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByActorName"/>
-         <output element="tns:GetAllMoviesByActorNameResponse"/>
       </operation>
       <operation name="GetAllMoviesByCategoryName"
                  pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:GetAllMoviesByCategoryName"/>
          <output element="tns:GetAllMoviesByCategoryNameResponse"/>
       </operation>
-      <operation name="GetAllMoviesByCountryName"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByCountryName"/>
-         <output element="tns:GetAllMoviesByCountryNameResponse"/>
+      <operation name="GetAwardsByMovieName" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:GetAwardsByMovieName"/>
+         <output element="tns:GetAwardsByMovieNameResponse"/>
       </operation>
-      <operation name="GetAllMoviesByDirectorName"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByDirectorName"/>
-         <output element="tns:GetAllMoviesByDirectorNameResponse"/>
-      </operation>
-      <operation name="GetAllMoviesByGenderName"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByGenderName"/>
-         <output element="tns:GetAllMoviesByGenderNameResponse"/>
-      </operation>
-      <operation name="GetAllMoviesByProducerName"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByProducerName"/>
-         <output element="tns:GetAllMoviesByProducerNameResponse"/>
-      </operation>
-      <operation name="GetAwardsByMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAwardsByMovie"/>
-         <output element="tns:GetAwardsByMovieResponse"/>
-      </operation>
-      <operation name="GetCastByMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetCastByMovie"/>
-         <output element="tns:GetCastByMovieResponse"/>
-      </operation>
-      <operation name="GetMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetMovie"/>
-         <output element="tns:GetMovieResponse"/>
-      </operation>
-      <operation name="GetMovieByMovieName" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetMovieByMovieName"/>
-         <output element="tns:GetMovieByMovieNameResponse"/>
+      <operation name="GetCastByMovieName" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:GetCastByMovieName"/>
+         <output element="tns:GetCastByMovieNameResponse"/>
       </operation>
       <operation name="RegisterNewMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:RegisterNewMovie"/>
          <output element="tns:RegisterNewMovieResponse"/>
       </operation>
-      <operation name="RemoveMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:RemoveMovie"/>
-         <output element="tns:RemoveMovieResponse"/>
-      </operation>
-      <operation name="UpdateMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:UpdateMovie"/>
-         <output element="tns:UpdateMovieResponse"/>
+      <operation name="RemoveMovieByName" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:RemoveMovieByName"/>
+         <output element="tns:RemoveMovieByNameResponse"/>
       </operation>
    </interface>
    <binding xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
@@ -566,42 +318,18 @@
             type="http://www.w3.org/ns/wsdl/soap"
             wsoap:version="1.1"
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
-      <operation ref="tns:ChangeMovieCategory"
-                 wsoap:soapAction="http://moviestoreservice.com/ChangeMovieCategory"/>
-      <operation ref="tns:ChangeMovieNationality"
-                 wsoap:soapAction="http://moviestoreservice.com/ChangeMovieNationality"/>
-      <operation ref="tns:GetAllAwards"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllAwards"/>
-      <operation ref="tns:GetAllGenders"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllGenders"/>
       <operation ref="tns:GetAllMovies"
                  wsoap:soapAction="http://moviestoreservice.com/GetAllMovies"/>
-      <operation ref="tns:GetAllMoviesByActorName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByActorName"/>
       <operation ref="tns:GetAllMoviesByCategoryName"
                  wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByCategoryName"/>
-      <operation ref="tns:GetAllMoviesByCountryName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByCountryName"/>
-      <operation ref="tns:GetAllMoviesByDirectorName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByDirectorName"/>
-      <operation ref="tns:GetAllMoviesByGenderName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByGenderName"/>
-      <operation ref="tns:GetAllMoviesByProducerName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByProducerName"/>
-      <operation ref="tns:GetAwardsByMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAwardsByMovie"/>
-      <operation ref="tns:GetCastByMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/GetCastByMovie"/>
-      <operation ref="tns:GetMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/GetMovie"/>
-      <operation ref="tns:GetMovieByMovieName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetMovieByMovieName"/>
+      <operation ref="tns:GetAwardsByMovieName"
+                 wsoap:soapAction="http://moviestoreservice.com/GetAwardsByMovieName"/>
+      <operation ref="tns:GetCastByMovieName"
+                 wsoap:soapAction="http://moviestoreservice.com/GetCastByMovieName"/>
       <operation ref="tns:RegisterNewMovie"
                  wsoap:soapAction="http://moviestoreservice.com/RegisterNewMovie"/>
-      <operation ref="tns:RemoveMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/RemoveMovie"/>
-      <operation ref="tns:UpdateMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/UpdateMovie"/>
+      <operation ref="tns:RemoveMovieByName"
+                 wsoap:soapAction="http://moviestoreservice.com/RemoveMovieByName"/>
    </binding>
    <binding name="MovieStoreServiceSoap12" interface="tns:MovieStoreServiceSoap">
       <soap12:binding xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
@@ -613,24 +341,12 @@
                       xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
                       xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
-      <operation ref="tns:ChangeMovieCategory"/>
-      <operation ref="tns:ChangeMovieNationality"/>
-      <operation ref="tns:GetAllAwards"/>
-      <operation ref="tns:GetAllGenders"/>
       <operation ref="tns:GetAllMovies"/>
-      <operation ref="tns:GetAllMoviesByActorName"/>
       <operation ref="tns:GetAllMoviesByCategoryName"/>
-      <operation ref="tns:GetAllMoviesByCountryName"/>
-      <operation ref="tns:GetAllMoviesByDirectorName"/>
-      <operation ref="tns:GetAllMoviesByGenderName"/>
-      <operation ref="tns:GetAllMoviesByProducerName"/>
-      <operation ref="tns:GetAwardsByMovie"/>
-      <operation ref="tns:GetCastByMovie"/>
-      <operation ref="tns:GetMovie"/>
-      <operation ref="tns:GetMovieByMovieName"/>
+      <operation ref="tns:GetAwardsByMovieName"/>
+      <operation ref="tns:GetCastByMovieName"/>
       <operation ref="tns:RegisterNewMovie"/>
-      <operation ref="tns:RemoveMovie"/>
-      <operation ref="tns:UpdateMovie"/>
+      <operation ref="tns:RemoveMovieByName"/>
    </binding>
    <service name="MovieStoreService" interface="tns:MovieStoreServiceSoap">
       <endpoint name="MovieStoreServiceSoap"
