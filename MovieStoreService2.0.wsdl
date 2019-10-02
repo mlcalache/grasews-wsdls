@@ -198,53 +198,53 @@
                           type="tns:Director"/>
             </s:sequence>
          </s:complexType>
-         <s:element name="GetAllMoviesByCategoryName">
+         <s:element name="GetAllMoviesByGender">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="categoryName" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetAllMoviesByCategoryNameResponse">
+         <s:element name="GetAllMoviesByGenderResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="GetAllMoviesByCategoryNameResult"
+                             name="GetAllMoviesByGenderResult"
                              type="tns:ArrayOfMovie"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetAwardsByMovieName">
+         <s:element name="GetAwardsByMovie">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetAwardsByMovieNameResponse">
+         <s:element name="GetAwardsByMovieResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="GetAwardsByMovieNameResult"
+                             name="GetAwardsByMovieResult"
                              type="tns:ArrayOfAward"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetCastByMovieName">
+         <s:element name="GetCastByMovie">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetCastByMovieNameResponse">
+         <s:element name="GetCastByMovieResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="GetCastByMovieNameResult"
+                             name="GetCastByMovieResult"
                              type="tns:ArrayOfActor"/>
                </s:sequence>
             </s:complexType>
@@ -266,19 +266,19 @@
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="RemoveMovieByName">
+         <s:element name="RemoveMovie">
             <s:complexType>
                <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="RemoveMovieByNameResponse">
+         <s:element name="RemoveMovieResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="1"
                              maxOccurs="1"
-                             name="RemoveMovieByNameResult"
+                             name="RemoveMovieResult"
                              type="s:boolean"/>
                </s:sequence>
             </s:complexType>
@@ -290,26 +290,25 @@
          <input element="tns:GetAllMovies"/>
          <output element="tns:GetAllMoviesResponse"/>
       </operation>
-      <operation name="GetAllMoviesByCategoryName"
-                 pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByCategoryName"/>
-         <output element="tns:GetAllMoviesByCategoryNameResponse"/>
+      <operation name="GetAllMoviesByGender" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:GetAllMoviesByGender"/>
+         <output element="tns:GetAllMoviesByGenderResponse"/>
       </operation>
-      <operation name="GetAwardsByMovieName" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAwardsByMovieName"/>
-         <output element="tns:GetAwardsByMovieNameResponse"/>
+      <operation name="GetAwardsByMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:GetAwardsByMovie"/>
+         <output element="tns:GetAwardsByMovieResponse"/>
       </operation>
-      <operation name="GetCastByMovieName" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetCastByMovieName"/>
-         <output element="tns:GetCastByMovieNameResponse"/>
+      <operation name="GetCastByMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:GetCastByMovie"/>
+         <output element="tns:GetCastByMovieResponse"/>
       </operation>
       <operation name="RegisterNewMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:RegisterNewMovie"/>
          <output element="tns:RegisterNewMovieResponse"/>
       </operation>
-      <operation name="RemoveMovieByName" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:RemoveMovieByName"/>
-         <output element="tns:RemoveMovieByNameResponse"/>
+      <operation name="RemoveMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:RemoveMovie"/>
+         <output element="tns:RemoveMovieResponse"/>
       </operation>
    </interface>
    <binding xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
@@ -320,16 +319,16 @@
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
       <operation ref="tns:GetAllMovies"
                  wsoap:soapAction="http://moviestoreservice.com/GetAllMovies"/>
-      <operation ref="tns:GetAllMoviesByCategoryName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByCategoryName"/>
-      <operation ref="tns:GetAwardsByMovieName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAwardsByMovieName"/>
-      <operation ref="tns:GetCastByMovieName"
-                 wsoap:soapAction="http://moviestoreservice.com/GetCastByMovieName"/>
+      <operation ref="tns:GetAllMoviesByGender"
+                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByGender"/>
+      <operation ref="tns:GetAwardsByMovie"
+                 wsoap:soapAction="http://moviestoreservice.com/GetAwardsByMovie"/>
+      <operation ref="tns:GetCastByMovie"
+                 wsoap:soapAction="http://moviestoreservice.com/GetCastByMovie"/>
       <operation ref="tns:RegisterNewMovie"
                  wsoap:soapAction="http://moviestoreservice.com/RegisterNewMovie"/>
-      <operation ref="tns:RemoveMovieByName"
-                 wsoap:soapAction="http://moviestoreservice.com/RemoveMovieByName"/>
+      <operation ref="tns:RemoveMovie"
+                 wsoap:soapAction="http://moviestoreservice.com/RemoveMovie"/>
    </binding>
    <binding name="MovieStoreServiceSoap12" interface="tns:MovieStoreServiceSoap">
       <soap12:binding xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
@@ -342,11 +341,11 @@
                       xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
       <operation ref="tns:GetAllMovies"/>
-      <operation ref="tns:GetAllMoviesByCategoryName"/>
-      <operation ref="tns:GetAwardsByMovieName"/>
-      <operation ref="tns:GetCastByMovieName"/>
+      <operation ref="tns:GetAllMoviesByGender"/>
+      <operation ref="tns:GetAwardsByMovie"/>
+      <operation ref="tns:GetCastByMovie"/>
       <operation ref="tns:RegisterNewMovie"/>
-      <operation ref="tns:RemoveMovieByName"/>
+      <operation ref="tns:RemoveMovie"/>
    </binding>
    <service name="MovieStoreService" interface="tns:MovieStoreServiceSoap">
       <endpoint name="MovieStoreServiceSoap"
