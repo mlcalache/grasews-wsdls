@@ -123,45 +123,45 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Director" nillable="true" type="tns:Director" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetAllMoviesByCategoryName">
+      <s:element name="GetAllMoviesByGender">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="categoryName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllMoviesByCategoryNameResponse">
+      <s:element name="GetAllMoviesByGenderResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByCategoryNameResult" type="tns:ArrayOfMovie" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByGenderResult" type="tns:ArrayOfMovie" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAwardsByMovieName">
+      <s:element name="GetAwardsByMovie">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAwardsByMovieNameResponse">
+      <s:element name="GetAwardsByMovieResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAwardsByMovieNameResult" type="tns:ArrayOfAward" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAwardsByMovieResult" type="tns:ArrayOfAward" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetCastByMovieName">
+      <s:element name="GetCastByMovie">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetCastByMovieNameResponse">
+      <s:element name="GetCastByMovieResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCastByMovieNameResult" type="tns:ArrayOfActor" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetCastByMovieResult" type="tns:ArrayOfActor" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -179,17 +179,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="RemoveMovieByName">
+      <s:element name="RemoveMovie">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="RemoveMovieByNameResponse">
+      <s:element name="RemoveMovieResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="RemoveMovieByNameResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveMovieResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -201,23 +201,23 @@
   <wsdl:message name="GetAllMoviesSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllMoviesResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllMoviesByCategoryNameSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategoryName" />
+  <wsdl:message name="GetAllMoviesByGenderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByGender" />
   </wsdl:message>
-  <wsdl:message name="GetAllMoviesByCategoryNameSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllMoviesByCategoryNameResponse" />
+  <wsdl:message name="GetAllMoviesByGenderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByGenderResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAwardsByMovieNameSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAwardsByMovieName" />
+  <wsdl:message name="GetAwardsByMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAwardsByMovie" />
   </wsdl:message>
-  <wsdl:message name="GetAwardsByMovieNameSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAwardsByMovieNameResponse" />
+  <wsdl:message name="GetAwardsByMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAwardsByMovieResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCastByMovieNameSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCastByMovieName" />
+  <wsdl:message name="GetCastByMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCastByMovie" />
   </wsdl:message>
-  <wsdl:message name="GetCastByMovieNameSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCastByMovieNameResponse" />
+  <wsdl:message name="GetCastByMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCastByMovieResponse" />
   </wsdl:message>
   <wsdl:message name="RegisterNewMovieSoapIn">
     <wsdl:part name="parameters" element="tns:RegisterNewMovie" />
@@ -225,36 +225,36 @@
   <wsdl:message name="RegisterNewMovieSoapOut">
     <wsdl:part name="parameters" element="tns:RegisterNewMovieResponse" />
   </wsdl:message>
-  <wsdl:message name="RemoveMovieByNameSoapIn">
-    <wsdl:part name="parameters" element="tns:RemoveMovieByName" />
+  <wsdl:message name="RemoveMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveMovie" />
   </wsdl:message>
-  <wsdl:message name="RemoveMovieByNameSoapOut">
-    <wsdl:part name="parameters" element="tns:RemoveMovieByNameResponse" />
+  <wsdl:message name="RemoveMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveMovieResponse" />
   </wsdl:message>
   <wsdl:portType name="MovieStoreServiceSoap">
     <wsdl:operation name="GetAllMovies">
       <wsdl:input message="tns:GetAllMoviesSoapIn" />
       <wsdl:output message="tns:GetAllMoviesSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByCategoryName">
-      <wsdl:input message="tns:GetAllMoviesByCategoryNameSoapIn" />
-      <wsdl:output message="tns:GetAllMoviesByCategoryNameSoapOut" />
+    <wsdl:operation name="GetAllMoviesByGender">
+      <wsdl:input message="tns:GetAllMoviesByGenderSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByGenderSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAwardsByMovieName">
-      <wsdl:input message="tns:GetAwardsByMovieNameSoapIn" />
-      <wsdl:output message="tns:GetAwardsByMovieNameSoapOut" />
+    <wsdl:operation name="GetAwardsByMovie">
+      <wsdl:input message="tns:GetAwardsByMovieSoapIn" />
+      <wsdl:output message="tns:GetAwardsByMovieSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetCastByMovieName">
-      <wsdl:input message="tns:GetCastByMovieNameSoapIn" />
-      <wsdl:output message="tns:GetCastByMovieNameSoapOut" />
+    <wsdl:operation name="GetCastByMovie">
+      <wsdl:input message="tns:GetCastByMovieSoapIn" />
+      <wsdl:output message="tns:GetCastByMovieSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RegisterNewMovie">
       <wsdl:input message="tns:RegisterNewMovieSoapIn" />
       <wsdl:output message="tns:RegisterNewMovieSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="RemoveMovieByName">
-      <wsdl:input message="tns:RemoveMovieByNameSoapIn" />
-      <wsdl:output message="tns:RemoveMovieByNameSoapOut" />
+    <wsdl:operation name="RemoveMovie">
+      <wsdl:input message="tns:RemoveMovieSoapIn" />
+      <wsdl:output message="tns:RemoveMovieSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MovieStoreServiceSoap" type="tns:MovieStoreServiceSoap">
@@ -268,8 +268,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByCategoryName">
-      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategoryName" style="document" />
+    <wsdl:operation name="GetAllMoviesByGender">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGender" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -277,8 +277,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAwardsByMovieName">
-      <soap:operation soapAction="http://moviestoreservice.com/GetAwardsByMovieName" style="document" />
+    <wsdl:operation name="GetAwardsByMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAwardsByMovie" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -286,8 +286,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCastByMovieName">
-      <soap:operation soapAction="http://moviestoreservice.com/GetCastByMovieName" style="document" />
+    <wsdl:operation name="GetCastByMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/GetCastByMovie" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -304,8 +304,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveMovieByName">
-      <soap:operation soapAction="http://moviestoreservice.com/RemoveMovieByName" style="document" />
+    <wsdl:operation name="RemoveMovie">
+      <soap:operation soapAction="http://moviestoreservice.com/RemoveMovie" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -325,8 +325,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByCategoryName">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByCategoryName" style="document" />
+    <wsdl:operation name="GetAllMoviesByGender">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGender" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -334,8 +334,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAwardsByMovieName">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetAwardsByMovieName" style="document" />
+    <wsdl:operation name="GetAwardsByMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAwardsByMovie" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -343,8 +343,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCastByMovieName">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetCastByMovieName" style="document" />
+    <wsdl:operation name="GetCastByMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetCastByMovie" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -361,8 +361,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveMovieByName">
-      <soap12:operation soapAction="http://moviestoreservice.com/RemoveMovieByName" style="document" />
+    <wsdl:operation name="RemoveMovie">
+      <soap12:operation soapAction="http://moviestoreservice.com/RemoveMovie" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
