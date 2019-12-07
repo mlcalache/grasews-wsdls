@@ -132,22 +132,23 @@
          </s:simpleType>
       </s:schema>
    </types>
-   <interface name="BookStoreServiceSoap">
+   <interface name="BookStoreService_1operationSoap">
       <operation name="GetAllBooks" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:GetAllBooks"/>
          <output element="tns:GetAllBooksResponse"/>
       </operation>
    </interface>
    <binding xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
-            name="BookStoreServiceSoap"
-            interface="tns:BookStoreServiceSoap"
+            name="BookStoreService_1operationSoap"
+            interface="tns:BookStoreService_1operationSoap"
             type="http://www.w3.org/ns/wsdl/soap"
             wsoap:version="1.1"
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
       <operation ref="tns:GetAllBooks"
                  wsoap:soapAction="http://mybookstore.com/GetAllBooks"/>
    </binding>
-   <binding name="BookStoreServiceSoap12" interface="tns:BookStoreServiceSoap">
+   <binding name="BookStoreService_1operationSoap12"
+            interface="tns:BookStoreService_1operationSoap">
       <soap12:binding xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
                       xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
                       xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
@@ -159,10 +160,12 @@
                       transport="http://schemas.xmlsoap.org/soap/http"/>
       <operation ref="tns:GetAllBooks"/>
    </binding>
-   <service name="BookStoreService" interface="tns:BookStoreServiceSoap">
-      <endpoint name="BookStoreServiceSoap"
-                binding="tns:BookStoreServiceSoap"
-                address="https://localhost:44307/BookStoreService.asmx"/>
-      <endpoint name="BookStoreServiceSoap12" binding="tns:BookStoreServiceSoap12"/>
+   <service name="BookStoreService_1operation"
+            interface="tns:BookStoreService_1operationSoap">
+      <endpoint name="BookStoreService_1operationSoap"
+                binding="tns:BookStoreService_1operationSoap"
+                address="https://localhost:44307/BookStoreService_1operation.asmx"/>
+      <endpoint name="BookStoreService_1operationSoap12"
+                binding="tns:BookStoreService_1operationSoap12"/>
    </service>
 </description>
