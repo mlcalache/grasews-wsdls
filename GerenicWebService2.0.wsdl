@@ -24,7 +24,7 @@
                 xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tempuri.org/">
-         <s:element name="HelloWorld">
+         <s:element name="MyMethod">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="1" maxOccurs="1" name="param1" type="s:int"/>
@@ -32,12 +32,12 @@
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="HelloWorldResponse">
+         <s:element name="MyMethodResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="HelloWorldResult"
+                             name="MyMethodResult"
                              type="tns:MyClass"/>
                </s:sequence>
             </s:complexType>
@@ -67,9 +67,9 @@
       </s:schema>
    </types>
    <interface name="WebService1Soap">
-      <operation name="HelloWorld" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:HelloWorld"/>
-         <output element="tns:HelloWorldResponse"/>
+      <operation name="MyMethod" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:MyMethod"/>
+         <output element="tns:MyMethodResponse"/>
       </operation>
    </interface>
    <binding xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
@@ -78,7 +78,7 @@
             type="http://www.w3.org/ns/wsdl/soap"
             wsoap:version="1.1"
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
-      <operation ref="tns:HelloWorld" wsoap:soapAction="http://tempuri.org/HelloWorld"/>
+      <operation ref="tns:MyMethod" wsoap:soapAction="http://tempuri.org/MyMethod"/>
    </binding>
    <binding name="WebService1Soap12" interface="tns:WebService1Soap">
       <soap12:binding xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
@@ -90,7 +90,7 @@
                       xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
                       xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
-      <operation ref="tns:HelloWorld"/>
+      <operation ref="tns:MyMethod"/>
    </binding>
    <service name="WebService1" interface="tns:WebService1Soap">
       <endpoint name="WebService1Soap"
