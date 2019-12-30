@@ -61,7 +61,7 @@
                                 name="Nationality"
                                 type="tns:Country"/>
                      <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Gender"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Genre"/>
                      <s:element minOccurs="0"
                                 maxOccurs="1"
                                 name="Producers"
@@ -89,10 +89,6 @@
                                 type="s:dateTime"/>
                      <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
                      <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
-                     <s:element minOccurs="0"
-                                maxOccurs="1"
-                                name="Nationality"
-                                type="tns:Country"/>
                   </s:sequence>
                </s:extension>
             </s:complexContent>
@@ -110,21 +106,12 @@
             <s:complexContent mixed="false">
                <s:extension base="tns:BaseModel">
                   <s:sequence>
-                     <s:element minOccurs="1"
-                                maxOccurs="1"
-                                name="DateOfBirth"
-                                type="s:dateTime"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
-                     <s:element minOccurs="0"
-                                maxOccurs="1"
-                                name="Nationality"
-                                type="tns:Country"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
                   </s:sequence>
                </s:extension>
             </s:complexContent>
          </s:complexType>
-         <s:complexType name="Gender">
+         <s:complexType name="Genre">
             <s:complexContent mixed="false">
                <s:extension base="tns:BaseModel">
                   <s:sequence>
@@ -137,16 +124,8 @@
             <s:complexContent mixed="false">
                <s:extension base="tns:BaseModel">
                   <s:sequence>
-                     <s:element minOccurs="1"
-                                maxOccurs="1"
-                                name="DateOfBirth"
-                                type="s:dateTime"/>
                      <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
                      <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
-                     <s:element minOccurs="0"
-                                maxOccurs="1"
-                                name="Nationality"
-                                type="tns:Country"/>
                   </s:sequence>
                </s:extension>
             </s:complexContent>
@@ -155,7 +134,6 @@
             <s:complexContent mixed="false">
                <s:extension base="tns:BaseModel">
                   <s:sequence>
-                     <s:element minOccurs="0" maxOccurs="1" name="Location" type="tns:Country"/>
                      <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
                      <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int"/>
                   </s:sequence>
@@ -198,54 +176,12 @@
                           type="tns:Director"/>
             </s:sequence>
          </s:complexType>
-         <s:element name="GetCastByMovie">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="movie" type="s:string"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="GetCastByMovieResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="GetCastByMovieResult"
-                             type="tns:ArrayOfActor"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="RegisterNewMovie">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0" maxOccurs="1" name="movie" type="tns:Movie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
-         <s:element name="RegisterNewMovieResponse">
-            <s:complexType>
-               <s:sequence>
-                  <s:element minOccurs="0"
-                             maxOccurs="1"
-                             name="RegisterNewMovieResult"
-                             type="tns:Movie"/>
-               </s:sequence>
-            </s:complexType>
-         </s:element>
       </s:schema>
    </types>
    <interface name="MovieStoreServiceSimplifiedSoap">
       <operation name="GetAllMovies" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:GetAllMovies"/>
          <output element="tns:GetAllMoviesResponse"/>
-      </operation>
-      <operation name="GetCastByMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetCastByMovie"/>
-         <output element="tns:GetCastByMovieResponse"/>
-      </operation>
-      <operation name="RegisterNewMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:RegisterNewMovie"/>
-         <output element="tns:RegisterNewMovieResponse"/>
       </operation>
    </interface>
    <binding xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
@@ -256,10 +192,6 @@
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
       <operation ref="tns:GetAllMovies"
                  wsoap:soapAction="http://moviestoreservice.com/GetAllMovies"/>
-      <operation ref="tns:GetCastByMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/GetCastByMovie"/>
-      <operation ref="tns:RegisterNewMovie"
-                 wsoap:soapAction="http://moviestoreservice.com/RegisterNewMovie"/>
    </binding>
    <binding name="MovieStoreServiceSimplifiedSoap12"
             interface="tns:MovieStoreServiceSimplifiedSoap">
@@ -273,8 +205,6 @@
                       xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
       <operation ref="tns:GetAllMovies"/>
-      <operation ref="tns:GetCastByMovie"/>
-      <operation ref="tns:RegisterNewMovie"/>
    </binding>
    <service name="MovieStoreServiceSimplified"
             interface="tns:MovieStoreServiceSimplifiedSoap">
