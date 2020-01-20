@@ -178,7 +178,7 @@
          </s:complexType>
       </s:schema>
    </types>
-   <interface name="MovieStoreServiceSimplifiedSoap">
+   <interface name="MovieStoreServiceSimplified">
       <operation name="GetAllMovies" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:GetAllMovies"/>
          <output element="tns:GetAllMoviesResponse"/>
@@ -186,15 +186,15 @@
    </interface>
    <binding xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
             name="MovieStoreServiceSimplifiedSoap"
-            interface="tns:MovieStoreServiceSimplifiedSoap"
+            interface="tns:MovieStoreServiceSimplified"
             type="http://www.w3.org/ns/wsdl/soap"
             wsoap:version="1.1"
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
       <operation ref="tns:GetAllMovies"
                  wsoap:soapAction="http://moviestoreservice.com/GetAllMovies"/>
    </binding>
-   <binding name="MovieStoreServiceSimplifiedSoap12"
-            interface="tns:MovieStoreServiceSimplifiedSoap">
+   <binding name="MovieStoreServiceSimplified12"
+            interface="tns:MovieStoreServiceSimplified">
       <soap12:binding xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
                       xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
                       xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
@@ -207,11 +207,11 @@
       <operation ref="tns:GetAllMovies"/>
    </binding>
    <service name="MovieStoreServiceSimplified"
-            interface="tns:MovieStoreServiceSimplifiedSoap">
-      <endpoint name="MovieStoreServiceSimplifiedSoap"
-                binding="tns:MovieStoreServiceSimplifiedSoap"
+            interface="tns:MovieStoreServiceSimplified">
+      <endpoint name="MovieStoreServiceSimplified"
+                binding="tns:MovieStoreServiceSimplified"
                 address="https://localhost:44350/MovieStoreServiceSimplified.asmx"/>
-      <endpoint name="MovieStoreServiceSimplifiedSoap12"
-                binding="tns:MovieStoreServiceSimplifiedSoap12"/>
+      <endpoint name="MovieStoreServiceSimplified12"
+                binding="tns:MovieStoreServiceSimplified12"/>
    </service>
 </description>
