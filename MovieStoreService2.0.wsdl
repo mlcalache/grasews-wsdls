@@ -61,7 +61,7 @@
                                 name="Nationality"
                                 type="tns:Country"/>
                      <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int"/>
-                     <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Gender"/>
+                     <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Genre"/>
                      <s:element minOccurs="0"
                                 maxOccurs="1"
                                 name="Producers"
@@ -124,7 +124,7 @@
                </s:extension>
             </s:complexContent>
          </s:complexType>
-         <s:complexType name="Gender">
+         <s:complexType name="Genre">
             <s:complexContent mixed="false">
                <s:extension base="tns:BaseModel">
                   <s:sequence>
@@ -198,19 +198,19 @@
                           type="tns:Director"/>
             </s:sequence>
          </s:complexType>
-         <s:element name="GetAllMoviesByGender">
+         <s:element name="GetAllMoviesByGenre">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string"/>
                </s:sequence>
             </s:complexType>
          </s:element>
-         <s:element name="GetAllMoviesByGenderResponse">
+         <s:element name="GetAllMoviesByGenreResponse">
             <s:complexType>
                <s:sequence>
                   <s:element minOccurs="0"
                              maxOccurs="1"
-                             name="GetAllMoviesByGenderResult"
+                             name="GetAllMoviesByGenreResult"
                              type="tns:ArrayOfMovie"/>
                </s:sequence>
             </s:complexType>
@@ -290,9 +290,9 @@
          <input element="tns:GetAllMovies"/>
          <output element="tns:GetAllMoviesResponse"/>
       </operation>
-      <operation name="GetAllMoviesByGender" pattern="http://www.w3.org/ns/wsdl/in-out">
-         <input element="tns:GetAllMoviesByGender"/>
-         <output element="tns:GetAllMoviesByGenderResponse"/>
+      <operation name="GetAllMoviesByGenre" pattern="http://www.w3.org/ns/wsdl/in-out">
+         <input element="tns:GetAllMoviesByGenre"/>
+         <output element="tns:GetAllMoviesByGenreResponse"/>
       </operation>
       <operation name="GetAwardsByMovie" pattern="http://www.w3.org/ns/wsdl/in-out">
          <input element="tns:GetAwardsByMovie"/>
@@ -319,8 +319,8 @@
             wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
       <operation ref="tns:GetAllMovies"
                  wsoap:soapAction="http://moviestoreservice.com/GetAllMovies"/>
-      <operation ref="tns:GetAllMoviesByGender"
-                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByGender"/>
+      <operation ref="tns:GetAllMoviesByGenre"
+                 wsoap:soapAction="http://moviestoreservice.com/GetAllMoviesByGenre"/>
       <operation ref="tns:GetAwardsByMovie"
                  wsoap:soapAction="http://moviestoreservice.com/GetAwardsByMovie"/>
       <operation ref="tns:GetCastByMovie"
@@ -341,7 +341,7 @@
                       xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
       <operation ref="tns:GetAllMovies"/>
-      <operation ref="tns:GetAllMoviesByGender"/>
+      <operation ref="tns:GetAllMoviesByGenre"/>
       <operation ref="tns:GetAwardsByMovie"/>
       <operation ref="tns:GetCastByMovie"/>
       <operation ref="tns:RegisterNewMovie"/>

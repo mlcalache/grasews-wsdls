@@ -26,7 +26,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
               <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Gender" />
+              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Genre" />
               <s:element minOccurs="0" maxOccurs="1" name="Producers" type="tns:ArrayOfProducer" />
               <s:element minOccurs="0" maxOccurs="1" name="Directors" type="tns:ArrayOfDirector" />
             </s:sequence>
@@ -71,7 +71,7 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="Gender">
+      <s:complexType name="Genre">
         <s:complexContent mixed="false">
           <s:extension base="tns:BaseModel">
             <s:sequence>
@@ -123,17 +123,17 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Director" nillable="true" type="tns:Director" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetAllMoviesByGender">
+      <s:element name="GetAllMoviesByGenre">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllMoviesByGenderResponse">
+      <s:element name="GetAllMoviesByGenreResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByGenderResult" type="tns:ArrayOfMovie" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesByGenreResult" type="tns:ArrayOfMovie" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -201,11 +201,11 @@
   <wsdl:message name="GetAllMoviesSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllMoviesResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllMoviesByGenderSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllMoviesByGender" />
+  <wsdl:message name="GetAllMoviesByGenreSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByGenre" />
   </wsdl:message>
-  <wsdl:message name="GetAllMoviesByGenderSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllMoviesByGenderResponse" />
+  <wsdl:message name="GetAllMoviesByGenreSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesByGenreResponse" />
   </wsdl:message>
   <wsdl:message name="GetAwardsByMovieSoapIn">
     <wsdl:part name="parameters" element="tns:GetAwardsByMovie" />
@@ -236,9 +236,9 @@
       <wsdl:input message="tns:GetAllMoviesSoapIn" />
       <wsdl:output message="tns:GetAllMoviesSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByGender">
-      <wsdl:input message="tns:GetAllMoviesByGenderSoapIn" />
-      <wsdl:output message="tns:GetAllMoviesByGenderSoapOut" />
+    <wsdl:operation name="GetAllMoviesByGenre">
+      <wsdl:input message="tns:GetAllMoviesByGenreSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesByGenreSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAwardsByMovie">
       <wsdl:input message="tns:GetAwardsByMovieSoapIn" />
@@ -268,8 +268,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByGender">
-      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGender" style="document" />
+    <wsdl:operation name="GetAllMoviesByGenre">
+      <soap:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGenre" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -325,8 +325,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllMoviesByGender">
-      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGender" style="document" />
+    <wsdl:operation name="GetAllMoviesByGenre">
+      <soap12:operation soapAction="http://moviestoreservice.com/GetAllMoviesByGenre" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

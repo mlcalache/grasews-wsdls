@@ -26,7 +26,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="tns:Country" />
               <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Gender" />
+              <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Genre" />
               <s:element minOccurs="0" maxOccurs="1" name="Producers" type="tns:ArrayOfProducer" />
               <s:element minOccurs="0" maxOccurs="1" name="Directors" type="tns:ArrayOfDirector" />
             </s:sequence>
@@ -71,7 +71,7 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="Gender">
+      <s:complexType name="Genre">
         <s:complexContent mixed="false">
           <s:extension base="tns:BaseModel">
             <s:sequence>
